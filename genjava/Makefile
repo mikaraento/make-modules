@@ -9,13 +9,13 @@ $(D)all: $(D)genjava.jar
 
 $(D)cp := $(D)genjava.jar
 
-$(D)foo.java: $(TOP)/generator/all
-	chdir $(D) && $(TOP)/generator/generator foo
+$(D)foo/foo.java: $(generator/all)
+	mkdir -p $(@D)
+	cd $(@D) && $(generator/generator) foo
 
-$(D)genjava.jar: $(D)foo.java
-	echo $(D)all
-	chdir $(D) && javac foo.java
-	chdir $(D) && jar cvf genjava.jar foo.class
+$(D)genjava.jar: $(D)foo/foo.java
+	cd $(@D)/foo && javac foo.java
+	cd $(@D) && jar cvf genjava.jar foo
 
 
 D := $(dirstack_$(sp))

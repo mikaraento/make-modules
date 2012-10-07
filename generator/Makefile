@@ -4,8 +4,10 @@ D := $(dir $(lastword $(MAKEFILE_LIST)))
 
 include rules.mk
 
+$(D)generator := $(abspath generator/generator)
+
 $(D)all: $(D)generator
-	touch $(D)all
+	touch $(@D)/all
 
 $(D)generator: $(D)generator.cpp
 	g++ -o $@ $^
