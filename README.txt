@@ -22,11 +22,18 @@ depend on to access any of the other variables. This variable must
 depend on all the artefacts the module has so that dependent modules
 get recompiled.
 
+All things must depend on $(root/d) and their own module Makefile - that
+way you'll rebuild if command line flags change.
+
+Environment variables should not affect builds.
+
 ---
 
 Notable things:
 
 - non-recursive makefiles
+- hence all paths are relative to root directory
+- and you run make always from the root directory
 - dependencies are between modules, not between files (simple graph,
   easier to get right, always correct, most of the performance benefits
   of the dependency graph)
