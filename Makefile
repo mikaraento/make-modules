@@ -1,13 +1,11 @@
-all: subdir/foo bar
+default: all
 
-include subdir/Makefile
+include rules.mk
 
-.PHONY: bar
-bar:
-	@echo in main
-	@echo $(subdir/cflags)
+include cljex/Makefile
 
-.PHONY: clean
+all: $(cljex/run)
+
 clean:
-	rm -rf build
-	mkdir -p build
+	rm -rf $(OUT)
+	mkdir -p $(OUT)

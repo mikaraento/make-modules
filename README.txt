@@ -1,4 +1,4 @@
-There are _packages_ named like foo/bar/.
+There are _packages_ named like foo/bar.
 
 Each package lives in a Makefile (one Makefile can have multiple packages).
 
