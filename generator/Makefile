@@ -8,4 +8,4 @@ $(D)/d := $(OUT)/$(D)/generator
 
 $(OUT)/$(D)/generator: $(D)/generator.cpp $(wildcard $(D)/*h) $(D)/Makefile $(root/d)
 	mkdir -p $(@D)
-	g++ $(CFLAGS) -o $@ $<
+	g++ $(root/cflags) -o $@ $<

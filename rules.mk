@@ -3,4 +3,4 @@ $(D)/d := rules.mk
 
 OUT := build
 
-CFLAGS := -I.
+$(D)/cflags := -I.
