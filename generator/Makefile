@@ -4,12 +4,12 @@ D := $(dir $(lastword $(MAKEFILE_LIST)))
 
 include rules.mk
 
-$(D)generator := $(abspath generator/generator)
+$(D)generator := $(abspath $(OUT)$(D)generator)
 
-$(D)all: $(D)generator
-	touch $(@D)/all
+$(D)d := $(OUT)$(D)generator
 
-$(D)generator: $(D)generator.cpp
+$(OUT)$(D)generator: $(D)generator.cpp
+	mkdir -p $(@D)
 	g++ -o $@ $^
 
 D := $(dirstack_$(sp))

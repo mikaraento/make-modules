@@ -5,18 +5,18 @@ D := $(dir $(lastword $(MAKEFILE_LIST)))
 include rules.mk
 include generator/Makefile
 
-$(D)all: $(D)genjava.jar
+$(D)d := $(OUT)$(D)genjava.jar
 
-$(D)cp := $(D)genjava.jar
+$(D)cp := $(OUT)$(D)genjava.jar
 
-$(D)foo/foo.java: $(generator/all)
+$(OUT)$(D)foo/foo.java: $(generator/d)
 	mkdir -p $(@D)
 	cd $(@D) && $(generator/generator) foo
 
-$(D)genjava.jar: $(D)foo/foo.java
+$(OUT)$(D)genjava.jar: $(OUT)$(D)foo/foo.java
+	mkdir -p $(@D)
 	cd $(@D)/foo && javac foo.java
 	cd $(@D) && jar cvf genjava.jar foo
-
 
 D := $(dirstack_$(sp))
 sp := $(basename $(sp))

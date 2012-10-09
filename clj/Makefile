@@ -4,7 +4,7 @@ D := $(dir $(lastword $(MAKEFILE_LIST)))
 
 include rules.mk
 
-$(D)all:
+$(D)d := $(D)clojure-1.4.0.jar
 
 $(D)cp := $(D)clojure-1.4.0.jar
 
