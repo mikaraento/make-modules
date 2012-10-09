@@ -1,11 +1,13 @@
-include rules.mk
+include root.mk
 
 D := generator
 
 $(D)/generator := $(abspath $(OUT)/$(D)/generator)
 
-$(D)/d := $(OUT)/$(D)/generator
+$(D) := $(OUT)/$(D)/generator
 
-$(OUT)/$(D)/generator: $(D)/generator.cpp $(wildcard $(D)/*h) $(D)/Makefile $(root/d)
+deps := $(root) $(D)/Makefile
+
+$(OUT)/$(D)/generator: $(D)/generator.cpp $(wildcard $(D)/*h) $(deps)
 	mkdir -p $(@D)
 	g++ $(root/cflags) -o $@ $<

@@ -1,6 +1,6 @@
 default: all
 
-include rules.mk
+include root.mk
 
 include cljex/Makefile
 

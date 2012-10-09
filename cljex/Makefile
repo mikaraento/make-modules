@@ -1,16 +1,17 @@
-include rules.mk
+include root.mk
 
 include genjava/Makefile
 include clj/Makefile
 
 D := cljex
 
-$(D)/d := $(D)/run.clj
+$(D) := $(D)/run.clj
+deps := $(genjava) $(clj) $(root)
 
 $(D)/run_cp := $(genjava/cp):$(clj/cp)
 
 $(D)/run := $(D)/run
 
 .PHONY: $(D)/run
-$(D)/run: $(D)/run.clj $(genjava/d) $(clj/d) $(root/d)
+$(D)/run: $(D)/run.clj $(deps)
 	java -cp $($(@D)/run_cp) clojure.main $<

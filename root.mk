@@ -1,5 +1,5 @@
 D := root
-$(D)/d := rules.mk
+$(D) := root.mk
 
 OUT := build
 
