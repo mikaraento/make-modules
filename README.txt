@@ -75,5 +75,26 @@ Notable things:
   rather than use fancy dependency generation (simpler, less work
   at graph creation time, possibly some extra compilation)
 - not using a directory stack for the D variable, instead setting
-  it explicitly after includes  
+  it explicitly after includes
+- outputs go outside the source tree
+- not using templates or fragments for the makefiles, just plain
+  include
 
+---
+
+Missing:
+- build-time vs. run-time dependencies
+- hygienic output directory: each package should have its own $(OUT)
+  and you could only use artefacts from packages you've explicitly
+  included, not anything in $(OUT)
+- no example of maintaining license compliance, though compliance
+  can quite easily be layered on top of this
+
+---
+
+Credits:
+- obviously influenced by other non-recursive make implementations
+  like https://github.com/aostruszka/nonrec-make and
+  http://evbergen.home.xs4all.nl/nonrecursive-make.html
+- consciously modelled after Google's internal build system, though
+  missing many things (see 'Missing' above)
